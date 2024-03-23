@@ -1,0 +1,23 @@
+{
+  "name": "cucumberjsbdd",
+  "version": "1.0.0",
+  "description": "cucumber js bdd mastering",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cucumber",
+    "js",
+    "ts",
+    "bdd"
+  ],
+  "author": "basheer mohammad",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

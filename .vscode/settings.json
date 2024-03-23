@@ -1,0 +1,14 @@
+{
+    "cucumber.features": [
+        "src/test/features/**/*.feature",
+    ],
+    "cucumber.glue": [
+        "src/test/specs/**/*.spec.ts"
+    ],
+    "cucumberautocomplete.customParameters": [
+        
+    ], "cucumberautocomplete.steps": [
+        "src/test/specs/**/*.spec.ts"
+    ],
+    "cucumberautocomplete.syncfeatures": "src/test/features/**/*.feature"
+}
