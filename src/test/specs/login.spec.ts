@@ -1,4 +1,4 @@
-import { Given, When, Then, defineParameterType, DataTable } from "@cucumber/cucumber";
+import { Given, When, Then, defineParameterType, DataTable, BeforeAll, AfterAll, Before, After, BeforeStep } from "@cucumber/cucumber";
 
 Given('the user is on the login page', function () {
     console.log(`----------the user is on the login page---------------`);
@@ -36,21 +36,21 @@ When('the user edits the the item in the cart', function () {
     console.log(`-----------the user edits the the item in the cart------------`);
 });
 
-// When('the user add {int} item to cart', function (noOfItems: number) {
-//     console.log(`-----------the user add ${noOfItems} item to cart----------------`);
-// });
+When('the user add {int} item to cart', function (noOfItems: number) {
+    console.log(`-----------the user add ${noOfItems} item to cart----------------`);
+});
 
-// When('the user add {int} item {string} to cart', function (noOfItems: number, productName: string) {
-//     console.log(`-----------the user add ${noOfItems} item ${productName} to cart----------------`);
-// });
+When('the user add {int} item {string} to cart', function (noOfItems: number, productName: string) {
+    console.log(`-----------the user add ${noOfItems} item ${productName} to cart----------------`);
+});
 
-// When('the user add {word} to cart', function (word: any) {
-//     console.log(`-----------the user add ${word} to cart----------------`);
-// });
+When('the user add {word} to cart', function (word: any) {
+    console.log(`-----------the user add ${word} to cart----------------`);
+});
 
-// Then('user should see some message', function (docString: string) {
-//     console.log(`${docString}`);
-// });
+Then('user should see some message', function (docString: string) {
+    console.log(`${docString}`);
+});
 
 When(/^the user add ((?:\d+)) item(?:s)? to cart$/, function (noOfItems: number) {
     console.log(`-------------the user add ${noOfItems} item(s) to cart----------`);
@@ -101,17 +101,45 @@ Given('the user {userDetails} details', function (userDetails: UserRecord) {
     console.log(`fname = ${userDetails.fname} lname=${userDetails.lname} and age=${userDetails.age}`);
 });
 
-
-Given('the below user details', function (dataTable:DataTable) {
-    console.log(dataTable.hashes());    
+Given('the below user details', function (dataTable: DataTable) {
+    console.log(dataTable.hashes());
 });
 
 When('the user enters valid credentials {string} and {string}', function (username, password) {
     console.log(`user name is ${username} and password is ${password}`);
-    
-  });
+});
 
-  Then('see a welcome message as {string}', function (message) {
-   console.log(`welcome message is ${message}`);
-   
-  });
+Then('see a welcome message as {string}', function (message) {
+    console.log(`welcome message is ${message}`);
+});
+
+When('the user add an item to cart',  function () {
+    console.log('the user add an item to cart');
+});
+
+Then('item should be cancelled in cart', function () {
+  console.log('item should be cancelled in cart');
+});
+
+When('the user cancels the the item in the cart', function () {
+  console.log('the user cancels the the item in the cart');
+});
+
+
+//-----------------------------
+
+BeforeAll(function(){
+    console.log('CREATING RES DIR :::::::::::::::::::');
+});
+
+// BeforeAll(function(){
+//     console.log('INTIALIZING DRIVER :::::::::::::::::::');
+// });
+
+Before(function (){
+    console.log('this IS LOGIN :: BEFORE EACH SCENARIO');
+});
+
+BeforeStep(function(){
+    console.log('THIS IS BEFORE STEP $$$$$$$$$$$$$$$$');
+});
