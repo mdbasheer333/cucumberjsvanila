@@ -1,4 +1,4 @@
-Feature: Login Functionality
+Feature: Cart Functionality 1
 
 Scenario: to cancel an item to the cart
     When the user add an item to cart

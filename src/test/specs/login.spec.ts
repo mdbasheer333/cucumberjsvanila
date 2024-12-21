@@ -124,22 +124,3 @@ Then('item should be cancelled in cart', function () {
 When('the user cancels the the item in the cart', function () {
   console.log('the user cancels the the item in the cart');
 });
-
-
-//-----------------------------
-
-BeforeAll(function(){
-    console.log('CREATING RES DIR :::::::::::::::::::');
-});
-
-// BeforeAll(function(){
-//     console.log('INTIALIZING DRIVER :::::::::::::::::::');
-// });
-
-Before(function (){
-    console.log('this IS LOGIN :: BEFORE EACH SCENARIO');
-});
-
-BeforeStep(function(){
-    console.log('THIS IS BEFORE STEP $$$$$$$$$$$$$$$$');
-});
