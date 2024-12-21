@@ -1,5 +1,7 @@
 import { Given, When, Then, defineParameterType, DataTable, BeforeAll, AfterAll, Before, After, BeforeStep } from "@cucumber/cucumber";
 
+let assert=require('assert');
+
 Given('the user is on the login page', function () {
     console.log(`----------the user is on the login page---------------`);
 });
@@ -34,6 +36,7 @@ Then('item should not be available in cart', function () {
 
 When('the user edits the the item in the cart', function () {
     console.log(`-----------the user edits the the item in the cart------------`);
+    assert.strictEqual(1,2,'this is intentional fail......!');
 });
 
 When('the user add {int} item to cart', function (noOfItems: number) {
