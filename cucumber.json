@@ -1,12 +1,16 @@
 {
     "default":{
-        "paths":["src/test/features/**/*.feature"],
-        "require":["src/test/specs/**/*.spec.ts"],
+        "paths":["/Users/basheermohammad/Documents/learn/cjs/cucumberjsvanila/src/test/features/hooksfeature1/file2.feature"],
+        "require":["src/test/specs/**/*.spec.ts", "src/test/specs/hooks.ts"],
         "requireModule":["ts-node/register"],
         "dryRun":false,
         "backtrace":true,
         "failFast":true,
         "forceExit":true,
-        "language":"en"
+        "language":"en",
+        "tags":"@smoke",
+        "order":"random",
+        "retry":3,
+        "retryTagFilter":"@flaky"
     }
 }
