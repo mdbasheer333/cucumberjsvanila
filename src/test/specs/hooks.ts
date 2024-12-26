@@ -11,13 +11,13 @@ import { Given, When, Then, defineParameterType, DataTable, BeforeAll, AfterAll,
 //     console.log('2 INTIALIZING DRIVER :::::::::::::::::::');
 // });
 
-Before(function (fn){
-    console.log('this IS LOGIN :: BEFORE EACH SCENARIO');
-});
+// Before(function (fn){
+//     console.log('this IS LOGIN :: BEFORE EACH SCENARIO');
+// });
 
-BeforeStep(function(fn){
-    console.log('THIS IS BEFORE STEP $$$$$$$$$$$$$$$$');
-});
+// BeforeStep(function(fn){
+//     console.log('THIS IS BEFORE STEP $$$$$$$$$$$$$$$$');
+// });
 
 // AfterAll(function(){
 //     console.log('1  QUITTINNG DRIVER INSTANCE............!');
@@ -27,9 +27,9 @@ BeforeStep(function(fn){
 //     console.log('2  QUITTINNG DRIVER INSTANCE............!');
 // });
 
-// After(function(fn){
-//     console.log('this IS LOGOUT :: AFTER EACH SCENARIO');
-// });
+After(function(fn){
+    console.log(`*************${fn.pickle.name}******************`);
+});
 
 // AfterStep(function(fn){
 //     console.log(`step ${fn.pickleStep.text} has completed and status is ${fn.result.status}`);
