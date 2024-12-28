@@ -36,7 +36,7 @@ Then('item should not be available in cart', function () {
 
 When('the user edits the the item in the cart', function () {
     console.log(`-----------the user edits the the item in the cart------------`);
-    assert.strictEqual(1,2,'this is intentional fail......!');
+    //assert.strictEqual(1,2,'this is intentional fail......!');
 });
 
 When('the user add {int} item to cart', function (noOfItems: number) {
