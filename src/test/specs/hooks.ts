@@ -1,5 +1,29 @@
-import { Given, When, Then, defineParameterType, DataTable, BeforeAll, AfterAll, Before, After, BeforeStep,AfterStep } from "@cucumber/cucumber";
+import { Given, When, Then, defineParameterType, DataTable, BeforeAll, AfterAll, Before, After, BeforeStep, AfterStep, setWorldConstructor, World, IWorldOptions } from "@cucumber/cucumber";
 
+import { Page, BrowserContext, Browser, chromium } from "playwright-core";
+
+export default class CustomWorld extends World {
+    private browser!: Browser;
+    private bCtx!: BrowserContext;
+    private page!: Page;
+    constructor(opions: IWorldOptions<any>) {
+        super(opions);
+    }
+    async init() {
+        this.browser = await chromium.launch({ headless: false, channel: "chrome", args: ['--start-maximized'] });
+        this.bCtx = await this.browser.newContext({ viewport: null, javaScriptEnabled: true });
+        this.page = await this.bCtx.newPage();
+    }
+    async deInit() {
+        await this.bCtx?.close();
+        await this.browser?.close();
+    }
+    getPage(){
+        return this.page;
+    }
+}
+
+setWorldConstructor(CustomWorld);
 
 //-----------------------------
 
@@ -11,9 +35,16 @@ import { Given, When, Then, defineParameterType, DataTable, BeforeAll, AfterAll,
 //     console.log('2 INTIALIZING DRIVER :::::::::::::::::::');
 // });
 
-// Before(function (fn){
-//     console.log('this IS LOGIN :: BEFORE EACH SCENARIO');
-// });
+Before(async function (this: CustomWorld, fn) {
+    console.log('this IS LOGIN :: BEFORE EACH SCENARIO');
+    await this.init();
+    await this.getPage().goto('https://www.google.com');
+});
+
+After(async function (this: CustomWorld, fn) {
+    await this.getPage().close();
+    await this.deInit();
+});
 
 // BeforeStep(function(fn){
 //     console.log('THIS IS BEFORE STEP $$$$$$$$$$$$$$$$');
@@ -27,7 +58,7 @@ import { Given, When, Then, defineParameterType, DataTable, BeforeAll, AfterAll,
 //     console.log('2  QUITTINNG DRIVER INSTANCE............!');
 // });
 
-After(function(fn){
+After(function (fn) {
     console.log(`*************${fn.pickle.name}******************`);
 });
 

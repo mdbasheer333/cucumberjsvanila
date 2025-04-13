@@ -1,4 +1,5 @@
 import { Given, When, Then, defineParameterType, DataTable, BeforeAll, AfterAll, Before, After, BeforeStep } from "@cucumber/cucumber";
+import  CustomWorld  from "./hooks";
 
 let assert=require('assert');
 
@@ -116,8 +117,8 @@ Then('see a welcome message as {string}', function (message) {
     console.log(`welcome message is ${message}`);
 });
 
-When('the user add an item to cart',  function () {
-    console.log('the user add an item to cart');
+When('the user add an item to cart',  async function (this:CustomWorld) {
+    console.log('the user add an item to cart' +  await this.getPage().title());
 });
 
 Then('item should be cancelled in cart', function () {
